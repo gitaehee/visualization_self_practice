@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link" // 이걸로 페이지 import 해오기
+import Image from "next/image"; // 최적화로 불러오기
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
       <div className="navbar"> {/* 헤더 같은 느낌, html 안에 작성*/}
-        <Link href="/">홈</Link>
+        <Link href="/">
+          홈<Image src="/logo.svg" alt="홈 로고" width={20} height={20} className="logo"/>
+        </Link>
+        <Link href="/visualize">시각화</Link>
         <Link href="/awards">어워즈</Link>
         <Link href="/vote">투표</Link>
       </div>
